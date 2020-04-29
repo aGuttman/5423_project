@@ -25,9 +25,11 @@ for i in range(size) :
         
 
 def step_grid() : 
+    chars = list()
     for i,dfa in enumerate(grid):
-       char = grid[(i-1)%size].current + grid[(i+1)%size].current
-       dfa.step(char)
+       chars.append(grid[(i-1)%size].current + grid[(i+1)%size].current)
+    for i,dfa in enumerate(grid) :
+       dfa.step(chars[i])
 
 def print_grid() :
     print ''.join( dfa.current for dfa in grid)
